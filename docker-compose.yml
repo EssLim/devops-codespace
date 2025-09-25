@@ -3,7 +3,8 @@ services:
   web:
     image: nginx
     ports:
-      - "8080:80"
+      - "8081:80"
   app:
     image: python:3.9
     command: python -c "print('Hello, Python!')"
+
