@@ -1,20 +1,9 @@
-name: CI/CD Docker
-on:
-  push:
-    branches:
-      - main
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build Docker
-        run: docker build -t my-nginx .
-      - name: Test Docker
-        run: docker run -d -p 80:80 my-nginx && curl http://localhost:80
-      - name: Run Docker Compose
-        run: docker-compose up -d
-      - name: Test Nginx
-        run: curl http://localhost:8081
+name: CI/CD Docker on: push: branches: - main jobs: build: runs-on: ubuntu-latest steps: - uses: 
+      actions/checkout@v3 - name: Build Docker
+        run: docker build -t my-nginx . - name: Test Docker run: | docker run -d -p 80:80 my-nginx sleep 5 curl 
+          http://localhost:80
+      - name: Run Docker Compose run: docker-compose up -d - name: Test Nginx run: | sleep 5 curl 
+          http://localhost:8081
       - name: Test Python
         run: docker-compose logs app | grep "Hello, Python!"
+
